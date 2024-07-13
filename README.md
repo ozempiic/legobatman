@@ -8,7 +8,7 @@ The purpose of this code is to showcase how to inject a custom DLL (`testlib.dll
 
 ## Files
 
-### `inject_dll.cpp`
+### `main.cpp`
 
 This file contains the main logic for injecting the DLL into the LEGO Batman: The Video Game process:
 
@@ -24,13 +24,9 @@ This file contains the main logic for injecting the DLL into the LEGO Batman: Th
 
 6. **Handle Thread Execution**: Waits for the remote thread to complete using `WaitForSingleObject` and checks the exit code using `GetExitCodeThread`.
 
-### `testlib.dll`
+### `testlib.dll - dllmain.cpp`
 
 This DLL is a placeholder for demonstration purposes. In a real scenario, it would contain functionality to interact with or modify the game's behavior.
-
-### `inject_log.txt`
-
-A log file (`inject_log.txt`) is created on the desktop (`C:\Users\Shadow\Desktop\legobatman\inject_log.txt`) to log the activity of the DLL injection process.
 
 ## Usage
 
