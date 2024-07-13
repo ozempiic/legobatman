@@ -3,7 +3,7 @@
 This repository demonstrates a DLL injection method into LEGO Batman: The Video Game using C++ and Windows API.
 
 <p align="center">
-  <img src="https://cdn.discordapp.com/attachments/1240708732787101707/1261549346814689360/image.png?ex=66935ce2&is=66920b62&hm=bcc2a753b2794b1312ff780abcd053f2608869d390aa3a65efd1b4fb96ea2fa3&" alt="DLL Injection" />
+  <img src="https://cdn.discordapp.com/attachments/1240708732787101707/1261552539321503764/image.png?ex=66935fdb&is=66920e5b&hm=36023d55f18c58b709ba7829cd71ac1da60fb8464e5e3ed3a2bacf638d8e7e89&" alt="DLL Injection" />
 </p>
 
 ## Purpose
