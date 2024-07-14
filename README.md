@@ -28,9 +28,9 @@ This file contains the main logic for injecting the DLL into the LEGO Batman: Th
 
 6. **Handle Thread Execution**: Waits for the remote thread to complete using `WaitForSingleObject` and checks the exit code using `GetExitCodeThread`.
 
-### `testlib.dll - dllmain.cpp`
+### `testlib.dll * dllmain.cpp - dllshellcode.cpp `
 
-This DLL is a placeholder for demonstration purposes. In a real scenario, it would contain functionality to interact with or modify the game's behavior.
+These DLL's are placeholders for demonstration purposes. In a real scenario, it would contain functionality to interact with or modify the game's behavior.
 
 ## Usage
 
