@@ -1,6 +1,7 @@
-# LEGO Batman: The Video Game DLL Injection Method
+# lego batman dll injection for funsies :3
 
-This repository demonstrates a DLL injection method into LEGO Batman: The Video Game using C++ and Windows API.
+1. This demonstrates a DLL injection method into lego batman using C++ and Windows API.
+2. This project is just to learn the rudimentaries about DLL Injections.
 
 *Disclaimer* this can easily be detected its just some fun project i wanted to make for a lego game LOL
 
@@ -10,13 +11,13 @@ This repository demonstrates a DLL injection method into LEGO Batman: The Video 
 
 ## Purpose
 
-The purpose of this code is to showcase how to inject a custom DLL (`testlib.dll`) into the LEGO Batman: The Video Game process (`LEGOBatman.exe`). DLL injection allows executing custom code within the game's address space.
+The purpose of this code is to showcase how to inject a custom DLL into the lego batman (or any process) DLL injection allows executing custom code within the game's address space.
 
 ## Files
 
 ### `main.cpp`
 
-This file contains the main logic for injecting the DLL into the LEGO Batman: The Video Game process:
+This file contains the main logic for injecting the DLL into the lego batman process
 
 1. **Find Process ID**: Finds the process ID of `LEGOBatman.exe` using `CreateToolhelp32Snapshot` and related functions.
 
