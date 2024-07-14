@@ -36,8 +36,8 @@ This DLL is a placeholder for demonstration purposes. In a real scenario, it wou
 
 To use this method:
 
-1. Compile `inject_dll.cpp` into an executable.
-2. Ensure `LEGOBatman.exe` and `testlib.dll` are located at the specified paths (`C:\Users\{user}\legobatman\`).
+1. Compile `dllmain.cpp & main.cpp` into an executable.
+2. Ensure `LEGOBatman.exe` and `testlib.dll` are located at the specified path.
 3. Run the compiled executable. It will attempt to inject `testlib.dll` into the running instance of LEGO Batman: The Video Game.
 
 ## Notes
