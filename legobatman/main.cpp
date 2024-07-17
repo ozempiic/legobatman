@@ -2,6 +2,8 @@
 #include <windows.h>
 #include <tlhelp32.h>
 
+using namespace std;
+
 DWORD FindProcessId(const char* processName) {
     HANDLE hSnapshot = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
     if (hSnapshot == INVALID_HANDLE_VALUE) {
@@ -33,25 +35,25 @@ int main() {
 
     DWORD procId = FindProcessId(exeName);
     if (procId == 0) {
-        std::cout << exeName << " process not found." << std::endl;
+        cout << exeName << " process not found." << endl;
         return 1;
     }
 
     HANDLE hProcess = OpenProcess(PROCESS_ALL_ACCESS, FALSE, procId);
     if (hProcess == NULL) {
-        std::cout << "Failed to open " << exeName << " process. Error code: " << GetLastError() << std::endl;
+        cout << "Failed to open " << exeName << " process. Error code: " << GetLastError() << endl;
         return 1;
     }
 
     LPVOID pDllPath = VirtualAllocEx(hProcess, NULL, strlen(dllPath) + 1, MEM_COMMIT, PAGE_EXECUTE_READWRITE);
     if (pDllPath == NULL) {
-        std::cout << "Failed to allocate memory in " << exeName << " process. Error code: " << GetLastError() << std::endl;
+        cout << "Failed to allocate memory in " << exeName << " process. Error code: " << GetLastError() << endl;
         CloseHandle(hProcess);
         return 1;
     }
 
     if (!WriteProcessMemory(hProcess, pDllPath, dllPath, strlen(dllPath) + 1, NULL)) {
-        std::cout << "Failed to write to " << exeName << " process memory. Error code: " << GetLastError() << std::endl;
+        cout << "Failed to write to " << exeName << " process memory. Error code: " << GetLastError() << std::endl;
         VirtualFreeEx(hProcess, pDllPath, strlen(dllPath) + 1, MEM_RELEASE);
         CloseHandle(hProcess);
         return 1;
@@ -59,20 +61,20 @@ int main() {
 
     HANDLE hRemoteThread = CreateRemoteThread(hProcess, NULL, 0, (LPTHREAD_START_ROUTINE)GetProcAddress(GetModuleHandle("Kernel32.dll"), "LoadLibraryA"), pDllPath, 0, NULL);
     if (hRemoteThread == NULL) {
-        std::cout << "Failed to create remote thread in " << exeName << " process. Error code: " << GetLastError() << std::endl;
+        cout << "Failed to create remote thread in " << exeName << " process. Error code: " << GetLastError() << endl;
         VirtualFreeEx(hProcess, pDllPath, strlen(dllPath) + 1, MEM_RELEASE);
         CloseHandle(hProcess);
         return 1;
     }
 
-    std::cout << "Successfully injected into " << exeName << "!" << std::endl;
+    cout << "Successfully injected into " << exeName << "!" << endl;
 
     WaitForSingleObject(hRemoteThread, INFINITE);
 
     DWORD exitCode = 0;
     GetExitCodeThread(hRemoteThread, &exitCode);
     if (exitCode == 0) {
-        std::cout << "DLL failed to load in " << exeName << std::endl;
+        cout << "DLL failed to load in " << exeName << endl;
     }
 
     VirtualFreeEx(hProcess, pDllPath, strlen(dllPath) + 1, MEM_RELEASE);
